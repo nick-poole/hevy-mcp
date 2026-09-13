@@ -1,0 +1,22 @@
+name = "hevy-mcp"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true
+
+# Secrets (set with `wrangler secret put <NAME>`, never in this file):
+#   HEVY_API_KEY    Hevy Pro API key from hevy.com/settings > Developer
+#   MCP_PATH_TOKEN  random path segment that gates /mcp/<token> (generate with `npm run token`)
+
+# The very first deploy used a Durable Object class (McpAgent). The server is
+# now stateless and no longer binds one, so migrate the class away. On a fresh
+# worker both migrations apply back to back and net out to nothing.
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["HevyMCP"]
+
+[[migrations]]
+tag = "v2"
+deleted_classes = ["HevyMCP"]
