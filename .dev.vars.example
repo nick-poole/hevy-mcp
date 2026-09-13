@@ -1,0 +1,3 @@
+# Copy to .dev.vars for `npm run dev`. Never commit the real file.
+HEVY_API_KEY=your-hevy-pro-api-key
+MCP_PATH_TOKEN=output-of-npm-run-token

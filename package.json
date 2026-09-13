@@ -1,0 +1,24 @@
+{
+  "name": "hevy-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Self-hosted MCP server on Cloudflare Workers exposing Hevy workout data to Claude",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "check": "tsc --noEmit && wrangler deploy --dry-run --outdir=.wrangler/dry-run",
+    "token": "node -e \"console.log(require('crypto').randomBytes(24).toString('base64url'))\""
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@modelcontextprotocol/server": "^2.0.0",
+    "agents": "^0.23.0",
+    "zod": "^4.6.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260911.1",
+    "typescript": "^5.9.0",
+    "wrangler": "^4.131.1"
+  }
+}
